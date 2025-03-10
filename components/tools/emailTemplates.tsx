@@ -43,7 +43,7 @@ export const emailTemplates: EmailTemplate[] = [
     title: "Hire Me",
     icon: "💼",
     description: "Recruitment inquiry",
-    prompt: `Write a professional email as a tech recruiter reaching out to hire Rushikesh Nimkar. Include these details:
+    prompt: `Write a professional email as a tech recruiter reaching out to hire Rakesh Singh. Include these details:
   
   My name is [Your Name]
   Position: Technical Recruiter

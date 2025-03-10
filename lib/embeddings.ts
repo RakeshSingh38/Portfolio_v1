@@ -36,7 +36,9 @@ export async function initializeVectorStore() {
     );
 
     // Get or create the index
-    const indexName = "rushikesh-portfolio";
+    // Use environment variable for index name with fallback
+    const indexName = process.env.PINECONE_INDEX_NAME || "rakesh-portfolio";
+    console.log(`Using index name: ${indexName}`);
 
     // List existing indexes
     const indexes = await pinecone.listIndexes();
@@ -98,7 +100,9 @@ export async function queryVectorStore(query: string, k: number = 5) {
       apiKey: process.env.PINECONE_API_KEY!,
     });
 
-    const index = pinecone.Index("rushikesh-portfolio");
+    // Use environment variable for index name with fallback
+    const indexName = process.env.PINECONE_INDEX_NAME || "rakesh-portfolio";
+    const index = pinecone.Index(indexName);
     const embeddings = getEmbeddings();
 
     // Create vector store from existing index
@@ -156,6 +160,9 @@ export async function vectorStoreExists(): Promise<boolean> {
     const pinecone = new Pinecone({
       apiKey: process.env.PINECONE_API_KEY!,
     });
+
+    // Use environment variable for index name with fallback
+    const indexName = process.env.PINECONE_INDEX_NAME || "rakesh-portfolio";
 
     const indexes = await pinecone.listIndexes();
     return (

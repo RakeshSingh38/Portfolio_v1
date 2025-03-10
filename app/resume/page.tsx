@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 
 export default function ResumePage() {
   const [mounted, setMounted] = useState(false);
-  const nameLetters = "Rushikesh Nimkar Resume ".split("");
+  const nameLetters = "Rakesh Singh Resume ".split("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setMounted(true);
-    }, 2000); // Give the animation time to complete
+    }, 800);
 
     return () => clearTimeout(timer);
   }, []);
@@ -183,7 +183,7 @@ export default function ResumePage() {
                       </div>
                       <div className="flex gap-3 flex-wrap">
                         <a
-                          href="https://github.com/Rushikeshnimkar"
+                          href="https://github.com/RakeshSingh38"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 transition-colors"
@@ -202,7 +202,7 @@ export default function ResumePage() {
                           </svg>
                         </a>
                         <a
-                          href="https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/"
+                          href="https://www.linkedin.com/in/RakeshSingh61/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 transition-colors"
@@ -217,7 +217,7 @@ export default function ResumePage() {
                           </svg>
                         </a>
                         <a
-                          href="https://x.com/RushikeshN22296"
+                          href="https://x.com/RakeshSingh38"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="w-8 h-8 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-neutral-700 transition-colors"

@@ -13,7 +13,7 @@ export function Footer() {
           {/* Social Links */}
           <div className="flex space-x-6">
             <a
-              href="https://github.com/Rushikeshnimkar"
+              href="https://github.com/RakeshSingh38"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-400 hover:text-blue-500 transition-colors"
@@ -21,7 +21,7 @@ export function Footer() {
               <FaGithub size={20} />
             </a>
             <a
-              href="https://linkedin.com/in/rushikesh-nimkar"
+              href="https://www.linkedin.com/in/RakeshSingh61/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-400 hover:text-blue-500 transition-colors"
@@ -29,7 +29,7 @@ export function Footer() {
               <FaLinkedin size={20} />
             </a>
             <a
-              href="https://twitter.com/RushikeshNimkar"
+              href="https://twitter.com/AlphaCentaurrii"
               target="_blank"
               rel="noopener noreferrer"
               className="text-neutral-400 hover:text-blue-500 transition-colors"
@@ -40,7 +40,7 @@ export function Footer() {
 
           {/* Copyright */}
           <div className="text-neutral-500 text-sm">
-            <p>© {currentYear} Rushikesh Nimkar</p>
+            <p>© {currentYear} Rakesh Singh</p>
           </div>
         </div>
       </div>

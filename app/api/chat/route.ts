@@ -16,8 +16,8 @@ import { queryVectorStore } from "@/lib/embeddings";
 // Add CORS check middleware
 function isAllowedOrigin(origin: string | null) {
   const allowedOrigins = [
-    "https://rushikeshnimkar.xyz",
-    "https://www.rushikeshnimkar.xyz",
+    "https://RakeshSingh.xyz",
+    "https://www.RakeshSingh.xyz",
 
     // Include localhost for development(uncomment for development)
     // "http://localhost:3000",
@@ -69,7 +69,7 @@ function needsWebSearch(message: string): boolean {
 const SKILLS_PATTERN =
   /skills|technologies|tech stack|programming|languages|frameworks|tools|libraries|proficient|expertise|capable|abilities/i;
 const PROJECTS_PATTERN =
-  /projects|portfolio|work|applications|apps|websites|developed|built|created|made|showcase|gitsplit|cryptorage|terminal ai|mystic tarot/i;
+  /projects|portfolio|work|applications|apps|websites|developed|built|created|made|showcase|A Stock Prediction App|Ecommerce Landing Page project|terminal ai|mystic tarot/i;
 const EXPERIENCE_PATTERN =
   /experience|work history|job|career|background|employment|company|lazarus|position|role/i;
 const EDUCATION_PATTERN =
@@ -97,10 +97,10 @@ const LOCATION_PATTERN =
   /location|address|where.*live|where.*based|city|town|where.*from/i;
 
 // Add specific patterns for individual projects
-const GITSPLIT_PATTERN =
-  /gitsplit|funding platform|open-source funding|ethglobal/i;
-const CRYPTORAGE_PATTERN =
-  /cryptorage|chrome extension|secure storage|dorahacks|walrus blockchain/i;
+const A Stock Prediction App_PATTERN =
+  /A Stock Prediction App|funding platform|open-source funding|ethglobal/i;
+const Ecommerce Landing Page project_PATTERN =
+  /Ecommerce Landing Page project|chrome extension|secure storage|dorahacks|walrus blockchain/i;
 const TERMINAL_AI_PATTERN =
   /terminal ai|assistant|cli tool|command line|npm package|terminal-ai-assistant/i;
 
@@ -110,21 +110,21 @@ function detectQueryType(message: string): string | null {
 
   // Check for specific project types
   if (
-    GITSPLIT_PATTERN.test(lowerMessage) &&
-    !CRYPTORAGE_PATTERN.test(lowerMessage) &&
+    A Stock Prediction App_PATTERN.test(lowerMessage) &&
+    !Ecommerce Landing Page project_PATTERN.test(lowerMessage) &&
     !TERMINAL_AI_PATTERN.test(lowerMessage)
   )
-    return "gitsplit_project";
+    return "A Stock Prediction App_project";
   if (
-    CRYPTORAGE_PATTERN.test(lowerMessage) &&
-    !GITSPLIT_PATTERN.test(lowerMessage) &&
+    Ecommerce Landing Page project_PATTERN.test(lowerMessage) &&
+    !A Stock Prediction App_PATTERN.test(lowerMessage) &&
     !TERMINAL_AI_PATTERN.test(lowerMessage)
   )
-    return "cryptorage_project";
+    return "Ecommerce Landing Page project_project";
   if (
     TERMINAL_AI_PATTERN.test(lowerMessage) &&
-    !GITSPLIT_PATTERN.test(lowerMessage) &&
-    !CRYPTORAGE_PATTERN.test(lowerMessage)
+    !A Stock Prediction App_PATTERN.test(lowerMessage) &&
+    !Ecommerce Landing Page project_PATTERN.test(lowerMessage)
   )
     return "terminal_ai_project";
 
@@ -226,8 +226,8 @@ class OpenRouterChatModel extends ChatOpenAI {
           method: "POST",
           headers: {
             Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-            "HTTP-Referer": "https://rushikeshnimkar.xyz",
-            "X-Title": "Rushikesh's Portfolio",
+            "HTTP-Referer": "https://RakeshSingh.xyz",
+            "X-Title": "Rakesh's Portfolio",
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -277,20 +277,20 @@ const CACHE_TTL = 1000 * 60 * 30; // 30 minutes
 function generateStructuredResponse(queryType: string): string {
   // Define individual project templates
   const projectTemplates: Record<string, any> = {
-    gitsplit_project: [
+    A_Stock_Prediction_App_project: [
       {
-        title: "Gitsplit",
+        title: "A Stock Prediction App",
         description:
-          "A funding platform for open-source projects using Next.js, Golang, and PostgreSQL.",
+          "A A Stock Prediction App using Next.js, Golang, and PostgreSQL.",
         technologies: ["Next.js", "Golang", "PostgreSQL", "GitHub API"],
-        link: "https://ethglobal.com/showcase/gitsplit-pkp5d",
+        link: "https://stockPrediction-delta.vercel.app",
       },
     ],
-    cryptorage_project: [
+    Ecommerce_Landing_Page_project_project: [
       {
-        title: "Cryptorage",
+        title: "Ecommerce Landing Page project",
         description:
-          "Chrome extension using React.js and Supabase for secure data storage with blockchain integration.",
+          "An Ecommerce landing Page",
         technologies: [
           "React.js",
           "Supabase",
@@ -298,16 +298,16 @@ function generateStructuredResponse(queryType: string): string {
           "OCR",
           "Gemini Nano",
         ],
-        link: "https://dorahacks.io/buidl/16435",
+        link: "https://buykaro2190.io/",
       },
     ],
-    terminal_ai_project: [
+    Chat_gpt_clone: [
       {
-        title: "Terminal AI Assistant",
+        title: "ChatGPT Clone",
         description:
-          "Node.js CLI tool that converts natural language into Windows command line instructions.",
+          "A ChatGPT CLone",
         technologies: ["Node.js", "DeepSeek-V3 AI", "CLI"],
-        link: "https://www.npmjs.com/package/terminal-ai-assistant",
+        link: "https://chatgpt564-mango.vercel.app",
       },
     ],
   };
@@ -315,15 +315,15 @@ function generateStructuredResponse(queryType: string): string {
   // Define individual contact templates
   const contactTemplates: Record<string, any> = {
     email_contact: {
-      email: "rushikeshnimkar396@gmail.com",
+      email: "rakeshsingh432165@gmail.com",
       type: "Email",
     },
     phone_contact: {
-      phone: "+919322675715",
+      phone: "+917021134166",
       type: "Phone",
     },
     location_contact: {
-      location: "Nagpur",
+      location: "Mumbai",
       type: "Location",
     },
   };
@@ -333,7 +333,7 @@ function generateStructuredResponse(queryType: string): string {
     resume_link: [
       {
         title: "Resume",
-        url: "https://rushikeshnimkar.xyz/resume",
+        url: "https://RakeshSingh.xyz/resume",
         description:
           "View my detailed resume with skills, experience, and education",
       },
@@ -341,7 +341,7 @@ function generateStructuredResponse(queryType: string): string {
     github_link: [
       {
         title: "GitHub Profile",
-        url: "https://github.com/Rushikeshnimkar",
+        url: "https://github.com/Rakeshsingh38",
         description:
           "Check out my code repositories and open-source contributions",
       },
@@ -349,32 +349,32 @@ function generateStructuredResponse(queryType: string): string {
     linkedin_link: [
       {
         title: "LinkedIn Profile",
-        url: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
+        url: "https://www.linkedin.com/in/RakeshSingh61/",
         description: "Connect with me professionally on LinkedIn",
       },
     ],
     portfolio_link: [
       {
         title: "Portfolio Website",
-        url: "https://rushikeshnimkar.xyz",
+        url: "https://RakeshSingh.xyz",
         description: "My personal portfolio showcasing projects and skills",
       },
     ],
     project_links: [
       {
-        title: "Gitsplit Project",
-        url: "https://ethglobal.com/showcase/gitsplit-pkp5d",
-        description: "Funding platform for open-source projects",
+        title: "Stock Prediction App",
+        url: "https://stockPrediction-delta.vercel.app",
+        description: "A Stock Prediction App",
       },
       {
-        title: "Cryptorage Project",
-        url: "https://dorahacks.io/buidl/16435",
-        description: "Chrome extension for secure data storage",
+        title: "Ecommerce Landing Page project",
+        url: "https://buykaro2190.io/",
+        description: "Ecommerce Landing Page made with React and typescript",
       },
       {
-        title: "Terminal AI Assistant",
-        url: "https://www.npmjs.com/package/terminal-ai-assistant",
-        description: "CLI tool for natural language command conversion",
+        title: "ChatGPT Clone",
+        url: "https://chatgpt564-mango.vercel.app",
+        description: "A chatGPT Clone",
       },
     ],
   };
@@ -397,16 +397,16 @@ function generateStructuredResponse(queryType: string): string {
     ],
     projects: [
       {
-        title: "Gitsplit",
+        title: "A Stock Prediction App",
         description:
-          "A funding platform for open-source projects using Next.js, Golang, and PostgreSQL.",
+          "A A Stock Prediction App using Next.js, Golang, and PostgreSQL.",
         technologies: ["Next.js", "Golang", "PostgreSQL", "GitHub API"],
-        link: "https://ethglobal.com/showcase/gitsplit-pkp5d",
+        link: "https://stockPrediction-delta.vercel.app",
       },
       {
-        title: "Cryptorage",
+        title: "Ecommerce Landing Page project",
         description:
-          "Chrome extension using React.js and Supabase for secure data storage with blockchain integration.",
+          "An Ecommerce Landing Page",
         technologies: [
           "React.js",
           "Supabase",
@@ -414,20 +414,20 @@ function generateStructuredResponse(queryType: string): string {
           "OCR",
           "Gemini Nano",
         ],
-        link: "https://dorahacks.io/buidl/16435",
+        link: "https://buykaro2190.io/",
       },
       {
-        title: "Terminal AI Assistant",
+        title: "ChatGPT Clone",
         description:
-          "Node.js CLI tool that converts natural language into Windows command line instructions.",
+          "A ChatGPT CLone",
         technologies: ["Node.js", "DeepSeek-V3 AI", "CLI"],
-        link: "https://www.npmjs.com/package/terminal-ai-assistant",
+        link: "https://chatgpt564-mango.vercel.app",
       },
     ],
     experience: [
       {
         title: "Full-Stack Engineer",
-        company: "Lazarus Network Inc.",
+        company: "Some Comapny",
         period: "Feb 2024 - Feb 2025",
         description:
           "Developed frontend with Next.js and React.js, backend with Node.js. Managed AWS EC2 and Google Cloud servers. Added multichain support to Erebrus and developed Netsepio frontend.",
@@ -435,79 +435,67 @@ function generateStructuredResponse(queryType: string): string {
     ],
     education: [
       {
-        title: "BE Computer Engineering",
-        institution: "AISSMS COE, Pune",
+        title: "BE Computer Engineering in (IOT)",
+        institution: "SIGCE",
         period: "2020 - 2024",
-        description: "Bachelor's degree in Computer Engineering",
+        description: "Bachelor's degree in Computer Engineering in (IOT)",
       },
       {
         title: "12th Grade",
-        institution: "DR. M.K. UMATHE COLLEGE, Nagpur",
-        period: "2019 - 2020",
+        institution: "YCC College, Mumbai",
+        period: "2017 - 2020",
         description: "Higher secondary education",
       },
       {
         title: "10th Grade",
-        institution: "SCHOOL OF SCHOLARS, Nagpur",
-        period: "2017 - 2018",
+        institution: "SCHOOL OF SCHOLARS, Mumbai",
+        period: "2016 - 2017",
         description: "Secondary education",
       },
     ],
     contact: {
-      email: "rushikeshnimkar396@gmail.com",
-      phone: "+919322675715",
-      location: "Nagpur",
-      linkedin: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
-      github: "https://github.com/Rushikeshnimkar",
-      portfolio: "https://rushikeshnimkar.xyz/",
+      email: "rakeshsingh432165@gmail.com",
+      phone: "+917021134166",
+      location: "Mumbai",
+      linkedin: "https://www.linkedin.com/in/RakeshSingh61/",
+      github: "https://github.com/Rakeshsingh38",
+      portfolio: "https://RakeshSingh.xyz/",
     },
-    awards: [
-      {
-        title: "Solana Radar Hackathon 2024",
-        description:
-          "Achieved 4th place out of 200+ global teams, demonstrating expertise in blockchain technology and innovative problem-solving.",
-      },
-      {
-        title: "Sui Overflow 2024",
-        description:
-          "Awarded the Community Favorite Award for Mystic Tarot, an innovative Web3 tarot reading platform on the Sui Network.",
-      },
-    ],
     links: [
       {
         title: "Portfolio Website",
-        url: "https://rushikeshnimkar.xyz",
+        url: "https://RakeshSingh.xyz",
         description: "My personal portfolio showcasing projects and skills",
       },
       {
         title: "Resume",
-        url: "https://rushikeshnimkar.xyz/resume",
+        url: "https://RakeshSingh.xyz/resume",
         description: "View my detailed resume",
       },
       {
         title: "GitHub Profile",
-        url: "https://github.com/Rushikeshnimkar",
+        url: "https://github.com/Rakeshsingh38",
         description: "Check out my code repositories and contributions",
       },
       {
         title: "LinkedIn",
-        url: "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
+        url: "https://www.linkedin.com/in/RakeshSingh61/",
         description: "Connect with me professionally",
       },
       {
-        title: "Gitsplit Project",
-        url: "https://ethglobal.com/showcase/gitsplit-pkp5d",
-        description: "Funding platform for open-source projects",
+        title: "Stock Prediction App",
+        url: "https://stockPrediction-delta.vercel.app",
+        description: "A Stock Prediction App",
       },
       {
-        title: "Cryptorage Project",
-        url: "https://dorahacks.io/buidl/16435",
-        description: "Chrome extension for secure data storage",
+        title: "Ecommerce Landing Page project",
+        url: "https://buykaro2190.io/",
+        description: "Ecommerce Landing Page made with React and typescript",
       },
       {
-        title: "Terminal AI Assistant",
-        url: "https://www.npmjs.com/package/terminal-ai-assistant",
-        description: "CLI tool for natural language command conversion",
+        title: "ChatGPT Clone",
+        url: "https://chatgpt564-mango.vercel.app",
+        description: "A chatGPT Clone",
       },
     ],
   };
@@ -656,7 +644,7 @@ export async function POST(req: Request) {
         }
 
         // Modify system prompt based on whether structured data will be added
-        let systemContent = `You are Rushikesh Nimkar, a full-stack developer with expertise in Java, React.js, Next.js, and MySQL.`;
+        let systemContent = `You are Rakesh Singh, a full-stack developer with expertise in Java, React.js, Next.js, and MySQL.`;
 
         if (willHaveStructuredData) {
           // For queries that will have structured data, instruct the model to be brief
@@ -700,7 +688,7 @@ export async function POST(req: Request) {
         }
 
         systemContent += `\n\nRules:
-        1. Speak as Rushikesh using "I" and "my"
+        1. Speak as Rakesh using "I" and "my"
         2. Keep responses concise and focused
         3. If unsure about specific details, say "Feel free to contact me directly for more information"
         4. Use web search results when provided for up-to-date information

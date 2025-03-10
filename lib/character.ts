@@ -1,21 +1,21 @@
 export const characterContent = `
-Rushikesh Nimkar
+Rakesh Singh
 Full-Stack Engineer
 
-Location: Nagpur
-Phone: +919322675715
-Email: rushikeshnimkar396@gmail.com
-Portfolio: https://rushikeshnimkar.xyz/
-GitHub: https://github.com/Rushikeshnimkar
-LinkedIn: https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/
-resume: https://rushikeshnimkar.xyz/resume
+Location: Mumbai
+Phone: +917021134166
+Email: rakeshsingh432165@gmail.com
+Portfolio: https://rakeshsingh.xyz/
+GitHub: https://github.com/RakeshSingh38
+LinkedIn: https://www.linkedin.com/in/RakeshSingh61/
+resume: https://rakeshsingh.xyz/resume
 
 
 Summary:
 I am a full-stack developer with expertise in Java, React.js, Next.js, and MySQL. Passionate about building scalable web applications with clean, maintainable code. Strong foundation in front-end development, creating responsive user interfaces, back-end integration, developing robust APIs, and database optimization for high-performance applications. Focused on delivering high-quality solutions while following best practices in software development and deployment.
 
 Experience:
-Lazarus Network Inc. | Full-Stack Engineer (Remote) | Feb 2024 - Feb 2025
+Some Comapny | Full-Stack Engineer (Remote) | Feb 2024 - Feb 2025
 
 Developed frontend with Next.js and React.js, and backend with Node.js.
 
@@ -29,33 +29,25 @@ Developed Netsepio frontend with authentication for Aptos wallets.
 
 Education:
 
-AISSMS COE, Pune | BE Computer Engineering | 2020 - 2024
+SIGCE | BE Computer Engineering | 2020 - 2024
 
-DR. M.K. UMATHE COLLEGE, Nagpur | 12th | 2019 - 2020
+YCC College, Mumbai | 12th | 2017 - 2020
 
-SCHOOL OF SCHOLARS, Nagpur | 10th | 2017 - 2018
+DVS School, Mumbai | 10th | 2016 - 2017
 
 Projects:
 
-Gitsplit (https://ethglobal.com/showcase/gitsplit-pkp5d)
+A Stock Prediction App (https://stockPrediction-delta.vercel.app)
 
-Developed a funding platform for open-source projects using Next.js, Golang, and PostgreSQL.
+Developed a A Stock Prediction App
 
-Connected GitHub API for seamless project discovery and user data management.
+Ecommerce Landing Page project (https://buykaro2190.io/)
 
-Implemented security features to ensure data protection and platform integrity.
+An Ecommerce Landing Page project 
 
-Cryptorage (https://dorahacks.io/buidl/16435)
+ChatGPT Clone (https://chatgpt564-mango.vercel.app)
 
-Developed a Chrome extension using React.js and Supabase for secure data storage.
-
-Integrated Walrus blockchain and OCR for decentralized image storage and text extraction.
-
-Designed a robust data management system with SQL and blockchain features, implementing an AI web summarizer API using Gemini Nano.
-
-Terminal AI Assistant (https://www.npmjs.com/package/terminal-ai-assistant)
-
-Node.js-based CLI tool that converts natural language into Windows command line instructions using DeepSeek-V3 AI.
+A ChatGpt based AI chatbot using Next.js, React.js, and Supabase for secure data storage.
 
 Supports real-time execution, secure command handling, fast responses, and API key encryption while ensuring cross-platform support.
 
@@ -68,16 +60,6 @@ Frameworks & Libraries: Next.js, React.js, TypeScript
 Databases: MySQL, PostgreSQL
 
 Tools: Git, Docker, GitHub, Postman
-
-Awards:
-
-Solana Radar Hackathon 2024
-
-Achieved 4th place out of 200+ global teams, demonstrating expertise in blockchain technology and innovative problem-solving.
-
-Sui Overflow 2024
-
-Awarded the Community Favorite Award for Mystic Tarot, an innovative Web3 tarot reading platform on the Sui Network, showcasing blockchain and user-centric design expertise.
 
 Languages:
 English, Marathi, Hindi

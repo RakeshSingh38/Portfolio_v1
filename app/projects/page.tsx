@@ -8,7 +8,7 @@ import Head from "next/head";
 
 // SEO keywords and descriptions
 const SEO = {
-  title: "Rushikesh Nimkar | Projects Portfolio",
+  title: "Rakesh Singh | Projects Portfolio",
   description:
     "Explore my portfolio of web development and software engineering projects. Featuring Next.js, React, TypeScript, and blockchain applications.",
   keywords:
@@ -42,7 +42,7 @@ const projects: Project[] = [
     },
     tags: ["Next.js", "TypeScript", "Tailwind CSS"],
     link: "https://cryptorage-login.vercel.app/",
-    github: "https://github.com/Rushikeshnimkar/CryptoRage",
+    github: "https://github.com/RakeshSingh38/CryptoRage",
   },
   {
     id: 2,
@@ -82,7 +82,7 @@ const projects: Project[] = [
     tags: ["Node.js", "TypeScript", "Qwen AI", "Commander.js", "Chalk"],
     link: "https://www.npmjs.com/package/terminal-ai-assistant",
     github:
-      "https://github.com/Rushikeshnimkar/terminal-ai-assistant-windows.git",
+      "https://github.com/RakeshSingh38/terminal-ai-assistant-windows.git",
   },
 ];
 
@@ -139,10 +139,10 @@ export default function Projects() {
       keywords: SEO.keywords,
       mainEntity: {
         "@type": "Person",
-        name: "Rushikesh Nimkar",
-        url: "https://github.com/Rushikeshnimkar",
+        name: "Rakesh Singh",
+        url: "https://github.com/RakeshSingh38",
         sameAs: [
-          "https://github.com/Rushikeshnimkar",
+          "https://github.com/RakeshSingh38",
           // Add other social profiles if available
         ],
       },
