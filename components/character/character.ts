@@ -69,6 +69,4 @@ hobbies:
 - travelling
 - listening to music
 - coding
-
-
 `;

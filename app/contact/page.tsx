@@ -10,6 +10,8 @@ import {
   LayoutTemplate,
   User,
   MessageSquare,
+  CheckCircle,
+  XCircle,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import { emailTemplates } from "@/components/tools/emailTemplates";
@@ -30,16 +32,25 @@ export default function Contact() {
   const [showTemplates, setShowTemplates] = useState(false);
   const [isTextAnimating, setIsTextAnimating] = useState(false);
   const [isTrustedClick, setIsTrustedClick] = useState(true);
+  const [islandExpanded, setIslandExpanded] = useState(false);
+  const [shouldHideNavbar, setShouldHideNavbar] = useState(false);
 
-  // Add useEffect to clear error messages after 5 seconds
   useEffect(() => {
     let timer: NodeJS.Timeout;
 
     if (status === "error" || status === "success") {
+      setShouldHideNavbar(true);
+      setIslandExpanded(true);
+
       timer = setTimeout(() => {
-        setStatus("idle");
-        setErrorMessage("");
-      }, 5000);
+        setIslandExpanded(false);
+
+        setTimeout(() => {
+          setStatus("idle");
+          setErrorMessage("");
+          setShouldHideNavbar(false);
+        }, 500);
+      }, 3000);
     }
 
     return () => {
@@ -47,9 +58,14 @@ export default function Contact() {
     };
   }, [status]);
 
-  // Function to check if a click event is trusted
+  useEffect(() => {
+    const event = new CustomEvent("toggleNavbar", {
+      detail: { visible: !shouldHideNavbar },
+    });
+    window.dispatchEvent(event);
+  }, [shouldHideNavbar]);
+
   const handleButtonClick = (e: React.MouseEvent, callback: () => void) => {
-    // isTrusted is true for real user interactions, false for programmatic clicks
     if (e.isTrusted) {
       callback();
     } else {
@@ -155,9 +171,6 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen w-full text-white relative">
-      {/* Background subtle glow similar to home page */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-cyan-500/5 filter blur-[80px] -z-10" />
-
       <AnimatePresence>
         {(status === "success" || status === "error") && (
           <motion.div
@@ -188,10 +201,11 @@ export default function Contact() {
               damping: 20,
               stiffness: 300,
             }}
-            className={`fixed top-0 left-1/2 z-[60] flex items-center justify-center shadow-xl backdrop-blur-lg border ${status === "success"
-                ? "bg-green-950/80 border-green-500/30"
-                : "bg-red-950/80 border-red-500/30"
-              }`}
+            className={`fixed top-0 left-1/2 z-[60] flex items-center justify-center shadow-xl backdrop-blur-lg ${
+              status === "success"
+                ? "bg-green-950/80 border border-green-500/30"
+                : "bg-red-950/80 border border-red-500/30"
+            }`}
           >
             <AnimatePresence>
               {islandExpanded && (
@@ -259,73 +273,36 @@ export default function Contact() {
         )}
       </AnimatePresence>
 
-      <div
-        className={`transition-all duration-300 ${isChatOpen ? "md:mr-[400px]" : ""
-          }`}
-      >
-        {/* Hero Section - Updated with cyberpunk styles */}
-        <div className="relative overflow-hidden z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8"
+      {/* Hero Section */}
+      <div className="relative overflow-hidden z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative max-w-7xl mx-auto px-4 py-16 sm:px-6 lg:px-8"
+        >
+          <motion.h1
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, type: "spring" }}
+            className="text-4xl md:text-6xl font-bold text-center"
           >
-            <motion.h1
-              initial={{ scale: 0.9 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="text-4xl md:text-6xl font-bold text-center relative"
-            >
-              Let&apos;s{" "}
-              <motion.span
-                className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-500"
-                animate={glitchAnimation}
-                transition={{
-                  duration: 0.2,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut",
-                  repeatDelay: 5,
-                }}
-              >
-                Connect
-              </motion.span>
-            </motion.h1>
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-center text-gray-400"
-              >
-                Choose between AI-powered email generation or write your message
-                manually
-              </motion.p>
-            </div>
-
-            {/* Decorative element similar to home page */}
-            <motion.div
-              className="absolute -bottom-2 -right-2 opacity-70 hidden md:block"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.7 }}
-              transition={{ delay: 0.7 }}
-            >
-              <motion.div
-                className="h-4 w-[200px] bg-gradient-to-r from-transparent via-indigo-500/40 to-cyan-500/40"
-                animate={{
-                  x: [0, 10, 0],
-                  opacity: [0.4, 0.7, 0.4],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        </div>
+            Let&apos;s{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient">
+              Connect
+            </span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="mt-6 text-xl text-center text-gray-400 max-w-2xl mx-auto"
+          >
+            Choose between AI-powered email generation or write your message
+            manually
+          </motion.p>
+        </motion.div>
+      </div>
 
         {/* Main Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 pb-16">
@@ -691,27 +668,19 @@ export default function Contact() {
                   )}
                 </div>
 
-                {/* deephermes-3-llama-3 Attribution */}
-                {mode === "ai" && (
-                  <div className="mt-2 flex items-center justify-end">
-                    <div className="text-xs text-gray-500 flex items-center gap-1.5">
-                      <Sparkles className="w-3 h-3 text-cyan-400" />
-                      <span>Powered by deephermes-3-llama-3</span>
-                    </div>
+              {/* Llama-3.3 Attribution */}
+              {mode === "ai" && (
+                <div className="mt-2 flex items-center justify-end">
+                  <div className="text-xs text-gray-500 flex items-center gap-1.5">
+                    <Sparkles className="w-3 h-3 text-blue-400" />
+                    <span>Powered by Llama-3.3</span>
                   </div>
-                )}
-              </div>
-            </motion.div>
-          </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
         </div>
       </div>
-
-      <ChatHistory
-        isOpen={isChatOpen}
-        onClose={() => setIsChatOpen(false)}
-        newEmail={newEmail}
-        onMessageCountChange={handleMessageCountChange}
-      />
     </div>
   );
 }
