@@ -1,10 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
 import { TextHoverEffect } from "@/components/ui/text-hover-effect";
 import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Head from "next/head";
+import { Metadata } from "next";
 
 const glitchAnimation = {
   textShadow: [
@@ -33,17 +35,29 @@ const imageMetadata = {
 };
 
 export default function HomePage() {
-  const [isGlitching, setIsGlitching] = useState(false);
+  const [activeImage, setActiveImage] = useState(1); // 1 or 2
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const perspective = useMotionValue(1000);
+  const rotate3d = useMotionValue(0);
+
+  // For dynamic shadow effect
+  const shadowOpacity = useTransform(rotate3d, [0, 30], [0.2, 0.5]);
+  const shadowBlur = useTransform(rotate3d, [0, 30], [5, 15]);
 
   useEffect(() => {
-    const glitchInterval = setInterval(() => {
-      setIsGlitching(true);
-      setTimeout(() => {
-        setIsGlitching(false);
-      }, 100);
-    }, 15000); // Changed the interval to 1000ms
+    // Image transition every 5 seconds
+    const imageInterval = setInterval(() => {
+      // Start transition
+      setIsTransitioning(true);
 
-    return () => clearInterval(glitchInterval);
+      // After transition duration, switch the active image
+      setTimeout(() => {
+        setActiveImage((prev) => (prev === 1 ? 2 : 1));
+        setIsTransitioning(false);
+      }, 1800); // Transition takes 1.8 seconds (slightly longer for smoother effect)
+    }, 5000); // Change image every 5 seconds
+
+    return () => clearInterval(imageInterval);
   }, []);
 
   return (
