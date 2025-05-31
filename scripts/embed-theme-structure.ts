@@ -29,7 +29,7 @@ The profile image container has ID "home-profile-image-container" and is impleme
 The Bitcoin symbol has ID "home-bitcoin-symbol" and is implemented as a motion.div with hover animations.
 
 The text content section has ID "home-text-content" and contains all text and interactive elements.
-The main heading has ID "home-title" and is implemented as a motion.h1 with fade animations. It contains the name "Rushikesh Nimkar".
+The main heading has ID "home-title" and is implemented as a motion.h1 with fade animations. It contains the name "Rakesh Singh".
 The subtitle has ID "home-subtitle" and is implemented as a motion.p element describing the professional role.
 The detailed description has ID "home-description" and is implemented as a motion.p providing background information.
 Action buttons are contained in a div with ID "home-action-buttons".
@@ -163,137 +163,141 @@ try {
 
 // --- Main Embedding Function ---
 async function embedAndStoreThemeStructure() {
-  try {
-    // --- 1. Validate API Keys ---
-    if (!process.env.PINECONE_API_KEY) {
-      throw new Error(
-        "PINECONE_API_KEY is not defined in environment variables. Please add it to your .env file."
-      );
-    }
-    if (!process.env.GOOGLE_API_KEY) {
-      throw new Error(
-        "GOOGLE_API_KEY is not defined in environment variables. Please add it to your .env file."
-      );
-    }
-    console.log("API keys found.");
+    try {
+        // --- 1. Validate API Keys ---
+        if (!process.env.PINECONE_API_KEY) {
+            throw new Error(
+                "PINECONE_API_KEY is not defined in environment variables. Please add it to your .env file."
+            );
+        }
+        if (!process.env.GOOGLE_API_KEY) {
+            throw new Error(
+                "GOOGLE_API_KEY is not defined in environment variables. Please add it to your .env file."
+            );
+        }
+        console.log("API keys found.");
 
-    // --- 2. Initialize Pinecone Client ---
-    const pinecone = new Pinecone({
-      apiKey: process.env.PINECONE_API_KEY,
-    });
-    console.log("Pinecone client initialized.");
+        // --- 2. Initialize Pinecone Client ---
+        const pinecone = new Pinecone({
+            apiKey: process.env.PINECONE_API_KEY,
+        });
+        console.log("Pinecone client initialized.");
 
-    // --- 3. Check or Create Pinecone Index ---
-    console.log(`Checking if index "${INDEX_NAME}" exists...`);
-    const indexes = (await pinecone.listIndexes())?.indexes ?? [];
-    let indexExists = false;
-    let needsWait = false;
+        // --- 3. Check or Create Pinecone Index ---
+        console.log(`Checking if index "${INDEX_NAME}" exists...`);
+        const indexes = (await pinecone.listIndexes())?.indexes ?? [];
+        let indexExists = false;
+        let needsWait = false;
 
-    const existingIndex = indexes.find((index) => index.name === INDEX_NAME);
-
-    if (existingIndex) {
-      console.log(`Index "${INDEX_NAME}" already exists.`);
-      if (existingIndex.dimension !== DIMENSION) {
-        throw new Error(
-          `Index "${INDEX_NAME}" exists but has dimension ${existingIndex.dimension}. Expected ${DIMENSION}. Please delete and recreate the index or use a different name.`
+        const existingIndex = indexes.find(
+            (index) => index.name === INDEX_NAME
         );
-      }
-      indexExists = true;
-    } else {
-      console.log(`Index "${INDEX_NAME}" does not exist. Creating...`);
-      await pinecone.createIndex({
-        name: INDEX_NAME,
-        dimension: DIMENSION,
-        metric: "cosine", // Cosine similarity is common for text embeddings
-        spec: {
-          serverless: {
-            cloud: "aws", // Or your preferred cloud
-            region: "us-east-1", // Or your preferred region
-          },
-        },
-      });
-      console.log(
-        `Index "${INDEX_NAME}" created. Waiting for initialization...`
-      );
-      needsWait = true;
-    }
 
-    // --- 4. Wait for Index Initialization if Newly Created ---
-    if (needsWait) {
-      console.log("Waiting for index to initialize (approx. 60 seconds)...");
-      await new Promise((resolve) => setTimeout(resolve, 60000));
-      console.log("Index should be ready.");
-    }
+        if (existingIndex) {
+            console.log(`Index "${INDEX_NAME}" already exists.`);
+            if (existingIndex.dimension !== DIMENSION) {
+                throw new Error(
+                    `Index "${INDEX_NAME}" exists but has dimension ${existingIndex.dimension}. Expected ${DIMENSION}. Please delete and recreate the index or use a different name.`
+                );
+            }
+            indexExists = true;
+        } else {
+            console.log(`Index "${INDEX_NAME}" does not exist. Creating...`);
+            await pinecone.createIndex({
+                name: INDEX_NAME,
+                dimension: DIMENSION,
+                metric: "cosine", // Cosine similarity is common for text embeddings
+                spec: {
+                    serverless: {
+                        cloud: "aws", // Or your preferred cloud
+                        region: "us-east-1", // Or your preferred region
+                    },
+                },
+            });
+            console.log(
+                `Index "${INDEX_NAME}" created. Waiting for initialization...`
+            );
+            needsWait = true;
+        }
 
-    // Get the index object
-    const index = pinecone.Index(INDEX_NAME);
-    console.log(`Connected to index "${INDEX_NAME}".`);
+        // --- 4. Wait for Index Initialization if Newly Created ---
+        if (needsWait) {
+            console.log(
+                "Waiting for index to initialize (approx. 60 seconds)..."
+            );
+            await new Promise((resolve) => setTimeout(resolve, 60000));
+            console.log("Index should be ready.");
+        }
 
-    // --- 5. Initialize Google Embedding Model ---
-    const embeddings = new GoogleGenerativeAIEmbeddings({
-      apiKey: process.env.GOOGLE_API_KEY,
-      model: GOOGLE_EMBEDDING_MODEL,
-      // taskType: "RETRIEVAL_DOCUMENT", // Optional: Specify task type if needed by the model/Pinecone
-    });
-    console.log(
-      `Initialized Google Embedding Model: ${GOOGLE_EMBEDDING_MODEL}`
-    );
+        // Get the index object
+        const index = pinecone.Index(INDEX_NAME);
+        console.log(`Connected to index "${INDEX_NAME}".`);
 
-    // --- 6. Prepare Documents ---
-    console.log("Splitting page content into chunks...");
-    const splitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000, // Adjust chunk size as needed
-      chunkOverlap: 100, // Adjust overlap as needed
-    });
-    const chunks = await splitter.splitText(pageContent);
-    console.log(`Created ${chunks.length} chunks.`);
-
-    const documents = chunks.map(
-      (chunk, i) =>
-        new Document({
-          pageContent: chunk,
-          metadata: {
-            source: "theme-structure",
-            chunk: i,
-            content_type: "page_layout_description",
-          },
-        })
-    );
-    console.log("Created LangChain documents from chunks.");
-
-    // --- 7. Embed and Store Documents in Pinecone ---
-    console.log(
-      `Embedding documents and upserting into index "${INDEX_NAME}"...`
-    );
-
-    // Optional: Clear existing vectors in the index/namespace if you want to overwrite
-    // console.log(`Clearing existing vectors in index "${INDEX_NAME}"...`);
-    // await index.deleteAll(); // Use with caution! Deletes all vectors in the index.
-    // OR use namespace: await index.namespace("your-namespace").deleteAll();
-
-    await PineconeStore.fromDocuments(documents, embeddings, {
-      pineconeIndex: index,
-      // namespace: "theme-structure" // Optional: Use a namespace if needed
-      maxConcurrency: 5, // Optional: Adjust concurrency based on API limits
-    });
-
-    console.log(
-      `Successfully embedded ${documents.length} documents and stored them in the "${INDEX_NAME}" index.`
-    );
-  } catch (error) {
-    console.error("Error during theme structure embedding:", error);
-    if (error instanceof Error) {
-      console.error("Error Details:", error.message);
-      if ("response" in error && error.response) {
-        // Log more details if it's an API error response
-        console.error(
-          "API Response Error:",
-          await (error as any).response.text()
+        // --- 5. Initialize Google Embedding Model ---
+        const embeddings = new GoogleGenerativeAIEmbeddings({
+            apiKey: process.env.GOOGLE_API_KEY,
+            model: GOOGLE_EMBEDDING_MODEL,
+            // taskType: "RETRIEVAL_DOCUMENT", // Optional: Specify task type if needed by the model/Pinecone
+        });
+        console.log(
+            `Initialized Google Embedding Model: ${GOOGLE_EMBEDDING_MODEL}`
         );
-      }
+
+        // --- 6. Prepare Documents ---
+        console.log("Splitting page content into chunks...");
+        const splitter = new RecursiveCharacterTextSplitter({
+            chunkSize: 1000, // Adjust chunk size as needed
+            chunkOverlap: 100, // Adjust overlap as needed
+        });
+        const chunks = await splitter.splitText(pageContent);
+        console.log(`Created ${chunks.length} chunks.`);
+
+        const documents = chunks.map(
+            (chunk, i) =>
+                new Document({
+                    pageContent: chunk,
+                    metadata: {
+                        source: "theme-structure",
+                        chunk: i,
+                        content_type: "page_layout_description",
+                    },
+                })
+        );
+        console.log("Created LangChain documents from chunks.");
+
+        // --- 7. Embed and Store Documents in Pinecone ---
+        console.log(
+            `Embedding documents and upserting into index "${INDEX_NAME}"...`
+        );
+
+        // Optional: Clear existing vectors in the index/namespace if you want to overwrite
+        // console.log(`Clearing existing vectors in index "${INDEX_NAME}"...`);
+        // await index.deleteAll(); // Use with caution! Deletes all vectors in the index.
+        // OR use namespace: await index.namespace("your-namespace").deleteAll();
+
+        await PineconeStore.fromDocuments(documents, embeddings, {
+            pineconeIndex: index,
+            // namespace: "theme-structure" // Optional: Use a namespace if needed
+            maxConcurrency: 5, // Optional: Adjust concurrency based on API limits
+        });
+
+        console.log(
+            `Successfully embedded ${documents.length} documents and stored them in the "${INDEX_NAME}" index.`
+        );
+    } catch (error) {
+        console.error("Error during theme structure embedding:", error);
+        if (error instanceof Error) {
+            console.error("Error Details:", error.message);
+            if ("response" in error && error.response) {
+                // Log more details if it's an API error response
+                console.error(
+                    "API Response Error:",
+                    await (error as any).response.text()
+                );
+            }
+        }
+        process.exit(1); // Exit with error code
     }
-    process.exit(1); // Exit with error code
-  }
 }
 
 // --- Run the script ---

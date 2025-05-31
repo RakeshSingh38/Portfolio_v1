@@ -5,7 +5,7 @@ export default function PDFViewer() {
   const [iframeHeight, setIframeHeight] = useState("800px");
   const [isMobile, setIsMobile] = useState(false);
 
-  const resumePath = "/Rushikesh_Nimkar.pdf";
+  const resumePath = "/rakesh_singh.pdf";
 
   useEffect(() => {
     // Set a timeout to consider the PDF loaded after 2 seconds
@@ -45,9 +45,8 @@ export default function PDFViewer() {
       )}
 
       <div
-        className={`border border-neutral-800 rounded-lg overflow-hidden shadow-xl bg-neutral-900/50 backdrop-blur-sm w-full ${
-          isLoading ? "hidden" : ""
-        }`}
+        className={`border border-neutral-800 rounded-lg overflow-hidden shadow-xl bg-neutral-900/50 backdrop-blur-sm w-full ${isLoading ? "hidden" : ""
+          }`}
       >
         {isMobile ? (
           // Mobile view with preview image and call-to-action

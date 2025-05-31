@@ -123,7 +123,7 @@ async function initializeVectorStore() {
     );
 
     // Get or create the index
-    const indexName = process.env.PINECONE_INDEX_NAME || "rushikesh-portfolio";
+    const indexName = process.env.PINECONE_INDEX_NAME || "rakesh-portfolio";
     console.log(`Using index name: ${indexName}`);
 
     // List existing indexes
@@ -220,7 +220,7 @@ async function initializeVectorStore() {
 
     // Test a query to verify it works
     console.log("Testing a query...");
-    const testQuery = "What are Rushikesh's skills?";
+    const testQuery = "What are Rakesh's skills?";
     const results = await vectorStore.similaritySearch(testQuery, 2);
     console.log("Test query results:");
     results.forEach((result, i) => {

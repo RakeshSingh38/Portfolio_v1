@@ -458,7 +458,7 @@ export const initializeChat = async (
       {
         type: "assistant",
         content:
-          "👋 Hey! I'm your AI assistant for this portfolio. I was created by Rushikesh to help you learn about his work and experience. What would you like to know?",
+          "👋 Hey! I'm your AI assistant for this portfolio. I was created by Rakesh to help you learn about his work and experience. What would you like to know?",
         timestamp: new Date(),
       },
     ]);

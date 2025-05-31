@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 // Allowed origins
 const allowedOrigins = [
-  "https://rushikeshnimkar.xyz",
-  "https://www.rushikeshnimkar.xyz",
+  "https://rakeshsingh.xyz",
+  "https://www.rakeshsingh.xyz",
 ];
 
 // Development environment check

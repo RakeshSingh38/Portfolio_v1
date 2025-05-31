@@ -20,14 +20,14 @@ const glitchAnimation = {
 // Define image metadata for SEO
 const imageMetadata = {
   profile1: {
-    url: "/rushikesh_nimkar.jpg",
-    alt: "Rushikesh Nimkar - Full Stack Developer Primary Profile",
+    url: "/rakesh_singh.jpg",
+    alt: "Rakesh Singh - Full Stack Developer Primary Profile",
     width: 800,
     height: 800,
   },
   profile2: {
     url: "/profile.jpg",
-    alt: "Rushikesh Nimkar - Full Stack Developer Alternate Profile",
+    alt: "Rakesh Singh - Full Stack Developer Alternate Profile",
     width: 800,
     height: 800,
   },
@@ -63,11 +63,11 @@ export default function HomePage() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              name: "Rushikesh Nimkar",
-              url: "https://rushikeshnimkar.com",
+              name: "Rakesh Singh",
+              url: "https://rakeshsingh.com",
               image: [
-                `https://rushikeshnimkar.com${imageMetadata.profile1.url}`,
-                `https://rushikeshnimkar.com${imageMetadata.profile2.url}`,
+                `https://rakeshsingh.com${imageMetadata.profile1.url}`,
+                `https://rakeshsingh.com${imageMetadata.profile2.url}`,
               ],
               jobTitle: "Full Stack Developer",
               description:
@@ -173,23 +173,23 @@ export default function HomePage() {
                     animate={
                       isTransitioning && activeImage === 2
                         ? {
-                            x: "-50%",
-                            rotateY: 45,
-                            scale: 0.85,
-                            zIndex: 0,
-                            opacity: 0.8,
-                            filter: "blur(2px)",
-                            z: -100,
-                          }
+                          x: "-50%",
+                          rotateY: 45,
+                          scale: 0.85,
+                          zIndex: 0,
+                          opacity: 0.8,
+                          filter: "blur(2px)",
+                          z: -100,
+                        }
                         : {
-                            x: activeImage === 1 ? "0%" : "100%",
-                            rotateY: 0,
-                            scale: 1,
-                            zIndex: activeImage === 1 ? 1 : 0,
-                            opacity: activeImage === 1 ? 1 : 0,
-                            filter: "blur(0px)",
-                            z: 0,
-                          }
+                          x: activeImage === 1 ? "0%" : "100%",
+                          rotateY: 0,
+                          scale: 1,
+                          zIndex: activeImage === 1 ? 1 : 0,
+                          opacity: activeImage === 1 ? 1 : 0,
+                          filter: "blur(0px)",
+                          z: 0,
+                        }
                     }
                     transition={{
                       duration: 1.8,
@@ -235,23 +235,23 @@ export default function HomePage() {
                     animate={
                       isTransitioning && activeImage === 1
                         ? {
-                            x: "50%",
-                            rotateY: -45,
-                            scale: 0.85,
-                            zIndex: 0,
-                            opacity: 0.8,
-                            filter: "blur(2px)",
-                            z: -100,
-                          }
+                          x: "50%",
+                          rotateY: -45,
+                          scale: 0.85,
+                          zIndex: 0,
+                          opacity: 0.8,
+                          filter: "blur(2px)",
+                          z: -100,
+                        }
                         : {
-                            x: activeImage === 2 ? "0%" : "-100%",
-                            rotateY: 0,
-                            scale: 1,
-                            zIndex: activeImage === 2 ? 1 : 0,
-                            opacity: activeImage === 2 ? 1 : 0,
-                            filter: "blur(0px)",
-                            z: 0,
-                          }
+                          x: activeImage === 2 ? "0%" : "-100%",
+                          rotateY: 0,
+                          scale: 1,
+                          zIndex: activeImage === 2 ? 1 : 0,
+                          opacity: activeImage === 2 ? 1 : 0,
+                          filter: "blur(0px)",
+                          z: 0,
+                        }
                     }
                     transition={{
                       duration: 1.8,
@@ -461,7 +461,7 @@ export default function HomePage() {
                   repeatDelay: 5,
                 }}
               >
-                Rushikesh Nimkar
+                Rakesh Singh
               </motion.span>
             </motion.h1>
 
@@ -485,7 +485,7 @@ export default function HomePage() {
               I turn coffee into code and bugs into features. Full-stack
               developer who enjoys building digital puzzles and occasionally
               solving them. Currently exploring blockchain, because why not add
-              more blocks to my stacks
+              more blocks to my stacks?
             </motion.p>
 
             <motion.div
@@ -543,7 +543,7 @@ export default function HomePage() {
                   <button
                     onClick={() =>
                       window.open(
-                        "https://github.com/sponsors/Rushikeshnimkar",
+                        "https://github.com/sponsors/RakeshSingh38",
                         "_blank"
                       )
                     }
@@ -572,7 +572,7 @@ export default function HomePage() {
                 transition={{ delay: 0.8 }}
               >
                 <a
-                  href="https://github.com/Rushikeshnimkar"
+                  href="https://github.com/RakeshSingh38"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
@@ -580,7 +580,7 @@ export default function HomePage() {
                   <FaGithub size={24} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/"
+                  href="https://www.linkedin.com/in/RakeshSingh61/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:-rotate-12"
@@ -588,7 +588,7 @@ export default function HomePage() {
                   <FaLinkedin size={24} />
                 </a>
                 <a
-                  href="https://x.com/RushikeshN22296"
+                  href="https://x.com/RakeshSIngh38"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-blue-500 transition-all duration-300 hover:scale-125 hover:rotate-12"
