@@ -257,11 +257,10 @@ export default function Contact() {
               damping: 20,
               stiffness: 300,
             }}
-            className={`fixed top-0 left-1/2 z-[60] flex items-center justify-center shadow-xl backdrop-blur-lg border ${
-              status === "success"
+            className={`fixed top-0 left-1/2 z-[60] flex items-center justify-center shadow-xl backdrop-blur-lg border ${status === "success"
                 ? "bg-green-950/80 border-green-500/30"
                 : "bg-red-950/80 border-red-500/30"
-            }`}
+              }`}
           >
             <AnimatePresence>
               {islandExpanded && (
@@ -330,9 +329,8 @@ export default function Contact() {
       </AnimatePresence>
 
       <div
-        className={`transition-all duration-300 ${
-          isChatOpen ? "md:mr-[400px]" : ""
-        }`}
+        className={`transition-all duration-300 ${isChatOpen ? "md:mr-[400px]" : ""
+          }`}
       >
         {/* Hero Section - Updated with cyberpunk styles */}
         <div className="relative overflow-hidden z-10">
@@ -417,11 +415,10 @@ export default function Contact() {
                     setMode(m as "ai" | "manual");
                     setShowTemplates(false);
                   }}
-                  className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                    mode === m
+                  className={`px-6 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 flex items-center gap-2 ${mode === m
                       ? "bg-gradient-to-r from-blue-500 via-indigo-600 to-cyan-500 text-white shadow-lg shadow-indigo-500/25"
                       : "text-gray-400 hover:text-white hover:bg-white/5"
-                  }`}
+                    }`}
                 >
                   {m === "ai" ? (
                     <>
@@ -466,11 +463,10 @@ export default function Contact() {
                           handleButtonClick(e, handleGenerateEmail)
                         }
                         disabled={isGenerating || !prompt.trim()}
-                        className={`relative px-4 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 overflow-hidden ${
-                          isGenerating || !prompt.trim()
+                        className={`relative px-4 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 overflow-hidden ${isGenerating || !prompt.trim()
                             ? "bg-gray-700/50 text-gray-400 cursor-not-allowed"
                             : "bg-[#2a2a2a] text-white border border-indigo-500/30 hover:border-indigo-500/60 hover:shadow-lg hover:shadow-indigo-500/20 hover:scale-[1.02] active:scale-[0.98]"
-                        }`}
+                          }`}
                       >
                         {/* Background gradient for active button similar to home page */}
                         {!(isGenerating || !prompt.trim()) && (
@@ -505,23 +501,6 @@ export default function Contact() {
                       placeholder="Customize your email prompt..."
                     />
 
-                    {selectedTemplate !== null && (
-                      <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-xs text-gray-400 bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded-md">
-                        <span>
-                          Using: {emailTemplates[selectedTemplate].title}
-                        </span>
-                        <button
-                          onClick={() => {
-                            setSelectedTemplate(null);
-                            setPrompt("");
-                          }}
-                          className="text-gray-500 hover:text-gray-300"
-                        >
-                          Clear
-                        </button>
-                      </div>
-                    )}
-                  </div>
                     {selectedTemplate !== null && (
                       <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-xs text-gray-400 bg-gray-800/80 backdrop-blur-sm px-2 py-1 rounded-md">
                         <span>
@@ -580,11 +559,10 @@ export default function Contact() {
                               onClick={() => handleSelectTemplate(index)}
                               whileHover={{ y: -5 }}
                               whileTap={{ scale: 0.98 }}
-                              className={`flex flex-col items-center justify-center p-6 rounded-xl text-center h-full ${
-                                selectedTemplate === index
+                              className={`flex flex-col items-center justify-center p-6 rounded-xl text-center h-full ${selectedTemplate === index
                                   ? "bg-indigo-500/20 border-2 border-indigo-500"
                                   : "bg-neutral-800/60 border border-indigo-500/20 hover:border-indigo-500/40"
-                              } transition-all duration-200`}
+                                } transition-all duration-200`}
                             >
                               <div className="text-3xl mb-3">
                                 {template.icon}
@@ -626,7 +604,7 @@ export default function Contact() {
                         value={senderName}
                         onChange={(e) => setSenderName(e.target.value)}
                         className="w-full bg-neutral-800/40 border border-indigo-500/20 rounded-lg px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20 transition-all"
-                        placeholder="Rushikesh Nimkar"
+                        placeholder="Rakesh Singh"
                       />
                     </div>
                     <div>
@@ -691,10 +669,9 @@ export default function Contact() {
                           exit={{ opacity: 0, scale: 0.8 }}
                           onClick={() => setIsChatOpen(!isChatOpen)}
                           className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-2
-                            ${
-                              isChatOpen
-                                ? "bg-neutral-800 text-white border border-indigo-500/40"
-                                : "bg-neutral-800/50 border border-indigo-500/20 hover:border-indigo-500/40"
+                            ${isChatOpen
+                              ? "bg-neutral-800 text-white border border-indigo-500/40"
+                              : "bg-neutral-800/50 border border-indigo-500/20 hover:border-indigo-500/40"
                             }`}
                         >
                           <div className="relative">
@@ -712,11 +689,10 @@ export default function Contact() {
                       <button
                         onClick={(e) => handleButtonClick(e, handleSendEmail)}
                         disabled={isSending}
-                        className={`relative px-4 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 overflow-hidden ${
-                          isSending
+                        className={`relative px-4 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5 overflow-hidden ${isSending
                             ? "bg-gray-700/50 text-gray-400 cursor-not-allowed"
                             : "bg-[#2a2a2a] text-white border border-indigo-500/30 hover:border-indigo-500/60"
-                        }`}
+                          }`}
                       >
                         {/* Background gradient for send button */}
                         {!isSending && (

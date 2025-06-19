@@ -344,15 +344,19 @@ export default function HomePage() {
 
               {/* Animated edge highlight */}
               <motion.div
+                className="absolute top-0 right-0 w-full h-full pointer-events-none opacity-70"
                 animate={{
-                  rotate: [0, 360],
+                  background: [
+                    "linear-gradient(45deg, transparent 60%, rgba(99, 102, 241, 0.3) 100%)",
+                    "linear-gradient(45deg, transparent 60%, rgba(34, 211, 238, 0.3) 100%)",
+                    "linear-gradient(45deg, transparent 60%, rgba(99, 102, 241, 0.3) 100%)",
+                  ],
                 }}
                 transition={{
-                  duration: 20,
+                  duration: 5,
                   repeat: Infinity,
-                  ease: "linear",
+                  repeatType: "reverse",
                 }}
-                className="absolute inset-0 rounded-full border-2 border-blue-500/30 border-dashed"
               />
 
               {/* Animated particles in corner */}
