@@ -8,31 +8,31 @@ export function ProfileImagesSchema() {
           "@type": "ImageGallery",
           mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": "https://rushikeshnimkar.com",
+            "@id": "https://rakeshsingh.com",
           },
           about: {
             "@type": "Person",
-            name: "Rushikesh Nimkar",
+            name: "Rakesh Singh",
             description:
               "Full Stack Developer specializing in Next.js, TypeScript, and Blockchain development.",
           },
           associatedMedia: [
             {
               "@type": "ImageObject",
-              contentUrl: "https://rushikeshnimkar.com/rushikesh_nimkar.jpg",
-              name: "Rushikesh Nimkar - Full Stack Developer Primary Profile",
+              contentUrl: "https://rakeshsingh.com/rakesh_singh.jpg",
+              name: "Rakesh Singh - Full Stack Developer Primary Profile",
               description:
-                "Primary profile photo of Rushikesh Nimkar, Full Stack Developer",
+                "Primary profile photo of Rakesh Singh, Full Stack Developer",
               encodingFormat: "image/jpeg",
               width: "800",
               height: "800",
             },
             {
               "@type": "ImageObject",
-              contentUrl: "https://rushikeshnimkar.com/profile.jpg",
-              name: "Rushikesh Nimkar - Full Stack Developer Alternate Profile",
+              contentUrl: "https://rakeshsingh.com/profile.jpg",
+              name: "Rakesh Singh - Full Stack Developer Alternate Profile",
               description:
-                "Secondary profile photo of Rushikesh Nimkar, showcasing professional appearance",
+                "Secondary profile photo of Rakesh Singh, showcasing professional appearance",
               encodingFormat: "image/jpeg",
               width: "800",
               height: "800",

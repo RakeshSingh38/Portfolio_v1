@@ -6,12 +6,12 @@ export function PersonSchema() {
         __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          name: "Rushikesh Nimkar",
-          url: "https://rushikeshnimkar.com",
+          name: "Rakesh Singh",
+          url: "https://rakeshsingh.com",
           sameAs: [
-            "https://github.com/Rushikeshnimkar",
-            "https://www.linkedin.com/in/rushikesh-nimkar-0961361ba/",
-            "https://x.com/RushikeshN22296"
+            "https://github.com/RakeshSingh38",
+            "https://www.linkedin.com/in/RakeshSingh61/",
+            "https://x.com/RakeshSingh38"
           ],
           jobTitle: "Full Stack Developer",
           knowsAbout: ["Web Development", "Blockchain", "TypeScript", "React", "Next.js"],
